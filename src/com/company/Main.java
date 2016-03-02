@@ -48,7 +48,7 @@ class UDPServer extends Thread {
 
         try {
             socket.send(packet);
-            System.out.println("Successful sent to " + packet.getAddress().getHostAddress() + "\n");
+            System.out.println("Successful sent to " + packet.getAddress().getHostAddress() + "\n===================");
         } catch (IOException e) {
             System.err.println(e);
         }
@@ -69,9 +69,9 @@ class UDPServer extends Thread {
                     System.out.println("Trying to send back time-info\n");
                     sendPacket(address);
                 } else {
-                    System.err.println("Unknown client request\n");
+                    String data = new String(packet.getData());
+                    System.out.println("Received data: " + data + "\n===================");
                 }
-
             } catch (IOException e) {
                 System.err.println(e);
             }
